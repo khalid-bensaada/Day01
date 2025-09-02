@@ -1,1 +1,22 @@
+// Online C compiler to run C program online
+#include <stdio.h>
 
+int main() {
+    char name[15];
+    char namef[15];
+    int age ;
+    char sexe[15];
+    char mail[50];
+    printf("Enter your name: ");
+    scanf("%s",name);
+    printf("Enter your name family: ");
+    scanf("%s",namef);
+    printf("Enter your age: ");
+    scanf("%d",&age);
+    printf("Enter your sexe(male or femmel): ");
+    scanf("%s",sexe);
+    printf("Enter your mail: ");
+    scanf("%s",mail);
+
+    return 0;
+}
