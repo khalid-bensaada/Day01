@@ -90,3 +90,23 @@ int main() {
 
     return 0;
 }
+
+
+
+LES BOUCLE EXERCICE 1
+
+
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    int num1;
+    
+    printf("Please enter number: ");
+    scanf("%d",&num1);
+    for (int a=1;a<= 10;a++){
+        printf("%d * %d = %d \n",num1,a, num1*a);
+    }
+
+    return 0;
+}
