@@ -110,3 +110,21 @@ int main() {
 
     return 0;
 }
+
+EXERCICE 2
+
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    int num;
+    
+    printf("Enter a number: ");
+    scanf("%d",&num);
+    for (int a = 1; a <= num ; a++){
+        printf("%d * %d = %d \n",num,a,num*a);
+    }
+
+
+    return 0;
+}
