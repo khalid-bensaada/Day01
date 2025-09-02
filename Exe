@@ -233,3 +233,31 @@ int main() {
 
     return 0;
 }
+
+
+EXERCISES 5
+
+
+
+
+#include <stdio.h>
+
+int main() {
+    int base,exposant;
+    int result =1;
+    
+    printf("Enter number base: ");
+    scanf("%d",&base);
+    printf("Enter number exposant: ");
+    scanf("%d",&exposant);
+    
+    for(int i=0; i<exposant;i++){
+        result = result * base;
+    }
+    printf("result of %d ^ %d = %d",base,exposant, result);
+    
+    
+    
+
+    return 0;
+}
