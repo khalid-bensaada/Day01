@@ -261,3 +261,365 @@ int main() {
 
     return 0;
 }
+
+
+LES VARIABLE EX2
+
+
+#include <stdio.h>
+
+int main() {
+    float celsius, kelvin;
+    
+    printf("Entrez la température en Celsius : ");
+    scanf("%f", &celsius);
+    
+    kelvin = celsius + 273.15;
+    
+    printf("La température en Kelvin est : %.2f\n", kelvin);
+    
+    return 0;
+}
+
+
+EXERCISES 3
+
+
+#include <stdio.h>
+
+int main() {
+    float km, yards;
+
+    printf("Entrez la distance en kilomètres : ");
+    scanf("%f", &km);
+
+    yards = km * 1093.61;
+    printf("Distance en yards : %.2f\n", yards);
+
+    return 0;
+}
+
+
+EXERCISES 4
+
+
+#include <stdio.h>
+
+int main() {
+    float kmh, ms;
+
+    printf("Entrez la vitesse en km/h : ");
+    scanf("%f", &kmh);
+
+    ms = kmh * 0.27778;
+    printf("Vitesse en m/s : %.2f\n", ms);
+
+    return 0;
+}
+
+
+EXERCISES 5 
+
+
+
+#include <stdio.h>
+
+int main() {
+    float temp;
+
+    printf("Entrez la température en Celsius : ");
+    scanf("%f", &temp);
+
+    if (temp < 0)
+        printf("État de l'eau : Solide\n");
+    else if (temp >= 0 && temp < 100)
+        printf("État de l'eau : Liquide\n");
+    else
+        printf("État de l'eau : Gaz\n");
+
+    return 0;
+}
+
+
+
+LES CONDITIONS 1
+
+EXERCISES 1
+
+#include <stdio.h>
+
+int main() {
+    int n;
+    printf("Entrez un nombre: ");
+    scanf("%d", &n);
+
+    if (n % 2 == 0)
+        printf("%d est pair.\n", n);
+    else
+        printf("%d est impair.\n", n);
+
+    return 0;
+}
+
+
+EXERCISES 2
+
+#include <stdio.h>
+
+int main() {
+    char c;
+    printf("Entrez un caractere: ");
+    scanf(" %c", &c);
+
+    switch(c) {
+        case 'a': case 'e': case 'i': case 'o': case 'u':
+        case 'A': case 'E': case 'I': case 'O': case 'U':
+            printf("%c est une voyelle.\n", c);
+            break;
+        default:
+            printf("%c n'est pas une voyelle.\n", c);
+    }
+
+    return 0;
+}
+
+
+
+EXERCISES 3
+
+
+#include <stdio.h>
+
+int main() {
+    int a, b;
+    printf("Entrez deux nombres: ");
+    scanf("%d %d", &a, &b);
+
+    if (a == b)
+        printf("Resultat: %d\n", 3 * (a + b));
+    else
+        printf("Resultat: %d\n", a + b);
+
+    return 0;
+}
+
+
+EXERCISES 4
+
+
+
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    double a, b, c, delta, x1, x2;
+    printf("Entrez les coefficients a, b et c: ");
+    scanf("%lf %lf %lf", &a, &b, &c);
+
+    delta = b*b - 4*a*c;
+
+    if (delta > 0) {
+        x1 = (-b + sqrt(delta)) / (2*a);
+        x2 = (-b - sqrt(delta)) / (2*a);
+        printf("Deux solutions reelles: x1=%.2lf, x2=%.2lf\n", x1, x2);
+    } else if (delta == 0) {
+        x1 = -b / (2*a);
+        printf("Une solution reelle: x=%.2lf\n", x1);
+    } else {
+        printf("Pas de solution reelle.\n");
+    }
+
+    return 0;
+}
+
+
+EXERCISES 5 
+
+
+
+#include <stdio.h>
+
+int main() {
+    int annee;
+    printf("Entrez l'annee: ");
+    scanf("%d", &annee);
+
+    int mois = annee * 12;
+    int jours = annee * 365;
+    int heures = jours * 24;
+    int minutes = heures * 60;
+    int secondes = minutes * 60;
+
+    printf("%d annee(s) = %d mois\n", annee, mois);
+    printf("%d jours\n", jours);
+    printf("%d heures\n", heures);
+    printf("%d minutes\n", minutes);
+    printf("%d secondes\n", secondes);
+
+    return 0;
+}
+
+
+EXERCISES 6
+
+#include <stdio.h>
+
+int main() {
+    int n;
+    printf("Entrez un nombre: ");
+    scanf("%d", &n);
+
+    if (n > 0)
+        printf("Positif\n");
+    else if (n < 0)
+        printf("Negatif\n");
+    else
+        printf("Nul\n");
+
+    return 0;
+}
+
+
+
+LES CONDITIONS 2
+
+EXERCISES 1
+
+
+#include <stdio.h>
+
+int main() {
+    double revenu;
+    int score, duree;
+
+    printf("Entrez le revenu annuel (€): ");
+    scanf("%lf", &revenu);
+    printf("Entrez le score de credit (0-1000): ");
+    scanf("%d", &score);
+    printf("Entrez la duree du pret (annees): ");
+    scanf("%d", &duree);
+
+    if (revenu >= 30000 && score >= 700 && duree <= 10)
+        printf("Eligibilite: ELEGIBLE\n");
+    else if (revenu >= 30000 && score >= 650 && duree <= 15)
+        printf("Eligibilite: ELEGIBLE AVEC CONDITIONS\n");
+    else
+        printf("Eligibilite: NON ELEGIBLE\n");
+
+    return 0;
+}
+
+
+EXERCISES 2
+
+#include <stdio.h>
+
+int main() {
+    int age, typeVoiture, nbAccidents;
+    double primeBase = 100, prime; // Exemple de prime de base
+
+    printf("Entrez l'age du conducteur: ");
+    scanf("%d", &age);
+    printf("Entrez le type de voiture (1=sportive, 2=utilitaire, 3=familiale): ");
+    scanf("%d", &typeVoiture);
+    printf("Entrez le nombre d'accidents (5 dernieres annees): ");
+    scanf("%d", &nbAccidents);
+
+    // Calcul selon age
+    if (age < 25) prime = primeBase * 1.5;
+    else if (age <= 65) prime = primeBase;
+    else prime = primeBase * 1.2;
+
+    // Type de voiture
+    if (typeVoiture == 1) prime *= 2;
+    else if (typeVoiture == 2) prime *= 1.2;
+    else if (typeVoiture == 3) prime *= 1.1;
+
+    // Accidents
+    if (nbAccidents > 1) prime *= 1.3;
+
+    printf("Prime d'assurance: %.2lf €\n", prime);
+
+    return 0;
+}
+
+
+EXERCISES 4
+
+#include <stdio.h>
+
+int main() {
+    int score, anciennete, recompenses;
+    double bonus = 0;
+
+    printf("Entrez le score (0-100): ");
+    scanf("%d", &score);
+    printf("Entrez l'anciennete (annees): ");
+    scanf("%d", &anciennete);
+    printf("Entrez les recompenses (0,1,2+): ");
+    scanf("%d", &recompenses);
+
+    if (recompenses == 1) bonus = 0.1;
+    else if (recompenses >= 2) bonus = 0.2;
+
+    if (score >= 90 && anciennete >= 5)
+        printf("Evaluation: Excellente + bonus %.0f%%\n", bonus*100);
+    else if (score >= 75 && anciennete >= 3)
+        printf("Evaluation: Bonne + bonus %.0f%%\n", bonus*100);
+    else if (score >= 50 && anciennete < 3)
+        printf("Evaluation: Satisfaisante + bonus %.0f%%\n", bonus*100);
+    else
+        printf("Evaluation: Insuffisante\n");
+
+    return 0;
+}
+
+
+EXERCISES 5
+
+#include <stdio.h>
+
+int main() {
+    double budget;
+    int destination, nbPersonnes;
+
+    printf("Entrez le budget (€): ");
+    scanf("%lf", &budget);
+    printf("Entrez la destination (1=plage, 2=montagne, 3=ville): ");
+    scanf("%d", &destination);
+    printf("Entrez le nombre de personnes: ");
+    scanf("%d", &nbPersonnes);
+
+    if (budget >= 1000) printf("Voyage haut de gamme\n");
+    else if (budget >= 500) printf("Voyage moyen\n");
+    else printf("Voyage economique\n");
+
+    if (budget >= 1000 && nbPersonnes > 2) printf("Destination recommande: Plage\n");
+    else if (budget >= 500 && nbPersonnes <= 2) printf("Destination recommande: Montagne\n");
+    else printf("Destination recommande: Ville\n");
+
+    return 0;
+}
+
+EXERCISES 8
+
+#include <stdio.h>
+
+int main() {
+    int age, historique, couverture;
+
+    printf("Entrez l'age: ");
+    scanf("%d", &age);
+    printf("Historique medical (0=aucun,1=mineur,2=majeur): ");
+    scanf("%d", &historique);
+    printf("Type de couverture (1=base,2=etendue): ");
+    scanf("%d", &couverture);
+
+    if (age < 30) printf("Plan: Base\n");
+    else if (historique == 0) printf("Plan: Base\n");
+    else printf("Plan: Etendu\n");
+
+    if (historique == 2) printf("Couverture supplementaire pour problemes majeurs\n");
+
+    return 0;
+}
