@@ -1,0 +1,142 @@
+#include <stdio.h>
+#include <string.h>
+
+
+
+int main() {
+    char Titer[100][100];    
+    char Auteur[100][100];  
+    int Quantitè[100];         
+    float prix[100];            
+    int Livers = 0;              
+    int choix;
+
+    do {
+        printf("\n--- Library Management System ---\n");
+        printf("1. Ajouter un livre au stock.\n");
+        printf("2. Afficher tous les livres disponibles.\n");
+        printf("3. Rechercher un livre par son titre.\n");
+        printf("4. Mettre à jour la quantité d'un livre..\n");
+        printf("5. Supprimer un livre du stock.\n");
+        printf("6. Afficher le nombre total de livres en stock.\n");
+        printf("0. Exit\n");
+        printf("Choose an option: ");
+        scanf("%d", &choix);
+
+        if (choix == 1) { 
+            if (Livers >= 100) {
+                printf("Cannot add more books.\n");
+            } else {
+                printf("Enter book title: ");
+                scanf(" %s", Titer[Livers]);
+
+                printf("Enter author name: ");
+                scanf(" %s", Auteur[Livers]);
+
+                printf("Enter quantity: ");
+                scanf("%d", &Quantitè[Livers]);
+
+                printf("Enter price: ");
+                scanf("%f", &prix[Livers]);
+
+                Livers++;
+                printf("Book added successfully!\n");
+            }
+        }
+
+        else if (choix == 2) { 
+            if (Livers == 0) {
+                printf("No books in the library.\n");
+            } else {
+                printf("\n--- Book List ---\n");
+                for (int i = 0; i < Livers; i++) {
+                    printf("%d. %s | Auteur: %s | Quantity: %d | Prix: %.2f\n",
+                           i + 1, Titer[i], Auteur[i], Quantitè[i], prix[i]);
+                }
+            }
+        }
+
+        else if (choix == 3) { 
+            char search[100];
+            int found = 0;
+            printf("Enter book title to search: ");
+            scanf(" %s", search);
+
+            for (int i = 0; i < Livers; i++) {
+                if (strcmp(Titer[i], search) == 0) {
+                    printf("Book found: %s | Auteur: %s | Quantity: %d | Prix: %.2f\n",
+                           Titer[i], Auteur[i], Quantitè[i], prix[i]);
+                    found = 1;
+                    break;
+                }
+            }
+            if (!found) {
+                printf("Book not found.\n");
+            }
+        }
+
+        else if (choix == 4) { 
+            char updated[100];
+            int found = 0;
+            printf("Enter book title to update quantity: ");
+            scanf(" %s", updated);
+
+            for (int i = 0; i < Livers; i++) {
+                if (strcmp(Titer[i], updated) == 0) {
+                    printf("Enter new quantity: ");
+                    scanf("%d", &Quantitè[i]);
+                    printf("Quantity updated successfully.\n");
+                    found = 1;
+                    break;
+                }
+            }
+            if (!found) {
+                printf("Book not found.\n");
+            }
+        }
+
+        else if (choix == 5) { 
+            char deleted[100];
+            int found = 0;
+            printf("Enter book title to delete: ");
+            scanf(" %s", deleted);
+
+            for (int i = 0; i < Livers; i++) {
+                if (strcmp(Titer[i], deleted) == 0) {
+                    for (int j = i; j < Livers - 1; j++) {
+                        strcpy(Titer[j], Titer[j + 1]);
+                        strcpy(Auteur[j], Auteur[j + 1]);
+                        Quantitè[j] = Quantitè[j + 1];
+                        prix[j] = prix[j + 1];
+                    }
+                    Livers--;
+                    printf("Book deleted successfully.\n");
+                    found = 1;
+                    break;
+                }
+            }
+            if (!found) {
+                printf("Book not found.\n");
+            }
+        }
+
+        else if (choix == 6) { 
+            int total = 0;
+            for (int i = 0; i < Livers; i++) {
+                total += Quantitè[i];
+            }
+            printf("Total number of books in the library: %d\n", total);
+        }
+
+        else if (choix == 0) {
+            printf("Exiting program.\n");
+        }
+
+        else {
+            printf("Invalid option.\n");
+        }
+
+    } while (choix != 0);
+
+    return 0;
+}
