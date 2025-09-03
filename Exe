@@ -623,3 +623,25 @@ int main() {
 
     return 0;
 }
+
+
+
+LES TABLEAUX 
+EX 1
+
+#include<stdio.h>
+
+int main(){
+    int i ,n;
+    printf("entrer la taille de tablaux:\n");
+    scanf("%d",&n);
+    int tab[n];
+    
+    for(i=0;i<n;i++){
+        printf("les element de tablau %d : ",i);
+        scanf("%d",&tab[i]);
+    }
+    for(i=0;i<n;i++){
+        printf("tab[%d]= %d \n",i,tab[i]);     
+    }
+}
