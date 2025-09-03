@@ -645,3 +645,63 @@ int main(){
         printf("tab[%d]= %d \n",i,tab[i]);     
     }
 }
+
+
+EX 3
+
+
+#include <stdio.h>
+
+int main() {
+    int n, i, somme = 0;
+
+    printf("Entrez le nombre d'elements : ");
+    scanf("%d", &n);
+
+    int tab[n];  
+
+    
+    for(i = 0; i < n; i++) {
+        printf("Entrez l'element %d : ", i + 1);
+        scanf("%d", &tab[i]);
+    }
+
+    
+    for(i = 0; i < n; i++) {
+        somme += tab[i];
+    }
+
+    printf("La somme des elements est : %d\n", somme);
+
+    return 0;
+}
+
+
+EX 4 :
+
+
+#include <stdio.h>
+
+int main() {
+    int n ;
+    int max = 0;
+
+    printf("Enter the size you want :");
+    scanf("%d",&n);
+
+    int tab[n];
+    for(int i=0;i<n;i++){
+        printf("Enter the nubers you want %d: ",i+1);
+        scanf("%d",&tab[i]);
+    }
+    for(int i=0;i<n;i++){
+        if (tab[i] > max){
+            max =tab[i];
+        }
+    
+    }
+    
+    
+printf("the namber is max is :%d",max);
+    
+}
