@@ -77,3 +77,27 @@ int main(){
 
 
 }
+
+chalange 5:
+
+#include<stdio.h>
+
+int fact(int num){
+    int mult=1;
+
+    for(int i=1;i<=num;i++){
+        mult=mult*i;
+    
+    }
+    return mult;
+     
+    }  
+
+int main(){
+    int num;
+
+    printf("Pleas enter a number : ");
+    scanf("%d",&num);
+    printf("multiplication de %d = %d",num,fact(num));
+
+}
