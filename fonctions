@@ -54,3 +54,26 @@ int main(){
 
 
 }
+
+chalenge 4:
+
+
+
+#include<stdio.h>
+
+int max(int num1,int num2){
+       if (num1<num2){
+        printf("num2 is smaller than num1");
+       }else if(num1=num2){
+        printf("num1 egal num2");
+       }else{
+        printf("num1 is smaller than num2");
+       }
+}
+int main(){
+    int num1=2, num2=8;
+
+    printf( "",max(num1, num2));
+
+
+}
