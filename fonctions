@@ -1,3 +1,6 @@
+chalange 1:
+
+
 #include<stdio.h>
 
 int som(int num1,int num2){
@@ -5,6 +8,24 @@ int som(int num1,int num2){
 }
 int main(){
     int num1=2007, num2=2007;
+
+    printf("la somme enter les deux nomber est :%d",som(num1,num2));
+
+
+}
+
+
+chalange 2:
+
+
+#include<stdio.h>
+
+int som(int num1,int num2){
+        return num1*num2;
+}
+int main(){
+    int num1=2007, num2=2007;
+
 
     printf("la somme enter les deux nomber est :%d",som(num1,num2));
 
