@@ -1,0 +1,131 @@
+#include <stdio.h>
+#include <string.h>
+
+typedef struct{
+    char name[100];
+    char phone[100];
+    char mail[100];
+} contact;
+contact max[100];
+int cont = 0;
+
+
+void formation(){
+    if (cont < 100){
+        printf("Please enter the name: ");
+        scanf("%s",max[cont].name);
+        printf("Please enter the number: ");
+        scanf("%s",max[cont].phone);
+        printf("Please enter email: ");
+        scanf("%s",max[cont].mail);
+        cont++;
+        printf("Successfully entered ");
+    }else{
+        printf("sorry we don't have space in the contact.");
+    }
+}
+
+void edit(){
+    char name[100];
+    printf("Please enter the name you want to edit: ");
+    scanf("%s",name); 
+    for (int i = 0;i<cont;i++){
+       if (strcmp(max[i].name,name)==0){
+           printf("Please enter the new number: ");
+           scanf("%s",max[i].phone);
+           printf("Please enter the new email: ");
+           scanf("%s",max[i].mail);
+           printf("Successfully edit");
+           return;
+        }
+    }
+    printf("the name is incorrect ");
+}
+
+void find(){
+    char name[100];
+    printf("Please enter the name you want: ");
+    scanf("%s",name);
+    for(int i = 0 ; i < cont ; i++){
+        if (strcmp(max[i].name,name)==0){
+            printf("Contact found ");
+            printf("The name is : %s | The phone is : %s | The mail is : %s",max[i].name,max[i]. phone,max[i].mail);
+            return;
+        }
+        
+    }
+    printf ("Contact not found ");
+}
+
+void seecont(){
+    if (cont == 0) {
+        printf(" No contacts .\n");
+        return;
+    }
+    for (int i = 0; i < cont; i++) {
+        printf("\n---The contact %d ---\n", i + 1);
+        printf("The name: %s\n", max[i].name);
+        printf("The phone: %s\n", max[i].phone);
+        printf("The mail: %s\n", max[i].mail);
+    }
+    
+}
+
+void deleted(){
+    char name[100];
+    
+    printf("Please enter the name you want to delet: ");
+    scanf("%s",name);
+    for (int i = 0 ; i < cont ; i++){
+        if (strcmp(max[i].name,name)==0){
+            for (int j = i ; j < cont - 1 ; j++){
+                max[j] = max[j-1];
+            }
+            cont--;
+            printf("Successful delete ");
+            return;
+        }
+    }
+    printf ("contact not found ");
+}
+
+int main(){
+    int choice ;
+    
+    do{
+        printf("====== Contact =====\n");
+        printf("1- Add a contact.\n");
+        printf("2- View contacts.\n");
+        printf("3- Find a contact.\n");
+        printf("4- Edit contact.\n");
+        printf("5- Delete a contact.\n");
+        printf("6- exit.\n");
+        
+        printf("Please enter your choice: ");
+        scanf("%d",& choice);
+        switch(choice){
+            case 1:
+               formation();
+               break;
+            case 2:
+                seecont();
+                break;
+            case 3:
+                find();
+                break;
+            case 4:
+                edit();
+                break;
+            case 5:
+                deleted();
+                break;
+            case 6:
+                printf("goodbye");
+                break;
+            default:
+                printf("invalid choice");
+            
+        }
+    }while(choice != 6);
+    return 0;
+}
