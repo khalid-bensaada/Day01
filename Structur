@@ -13,3 +13,35 @@ int main(){
     printf("nom    : %s",p.prenom);
     printf("nom    : %d",p.age);
 }
+
+
+Challenge 2:
+
+#include <stdio.h>
+
+struct etudiant {
+    char nom[100];
+    char prenom[100];
+    int note[6];
+};
+
+int main(){
+    struct etudiant e ;
+    printf("entrez le nom etudiant : ");
+    scanf("%s",e.nom);
+    printf("entrez le prenom etudiant : ");
+    scanf("%s",e.prenom);
+    for (int i =0; i<6; i++) {
+        printf("note %d : ",i);
+        scanf("%d",&e.note[i]);
+
+    
+    }
+
+    printf("nom       : %s \n",e.nom);
+    printf("prenom    : %s \n",e.prenom);
+    for (int i = 0; i<6 ; i++) {
+        printf("note %d   : %d \n",i,e.note[i]);
+    
+    }
+}
