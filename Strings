@@ -1,0 +1,12 @@
+#include <stdio.h>
+
+int main(){
+    char chaine[20];
+
+    printf("entrez une chaine de caracteres svp : ");
+    scanf("%s",chaine);
+
+    printf("chaine de caracteres est : %s",chaine);
+
+}
+
