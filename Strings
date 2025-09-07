@@ -10,3 +10,27 @@ int main(){
 
 }
 
+Challenge 2
+
+#include <stdio.h>
+
+int main(){
+
+    char chaine[100];
+    int longueur =0;
+
+    printf("entrez une chaine de caracteres svp : ");
+    scanf("%s",chaine);
+
+    while (chaine[longueur]!='\0') {
+        longueur++;
+    
+    }
+    printf("longueur de %s est : %d ",chaine,longueur);
+
+    return 0;
+
+}
+
+challenge 3
+
