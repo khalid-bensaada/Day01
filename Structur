@@ -1,0 +1,15 @@
+#include <stdio.h>
+
+struct personne {
+    char nom[100];
+    char prenom[100];
+    int age;
+};
+
+int main(){
+    struct personne p = {"Khalid","Bensaada",18};
+
+    printf("nom    : %s",p.nom);
+    printf("nom    : %s",p.prenom);
+    printf("nom    : %d",p.age);
+}
