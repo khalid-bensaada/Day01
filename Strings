@@ -34,3 +34,28 @@ int main(){
 
 challenge 3
 
+#include <stdio.h>
+#include <string.h>
+
+int main(){
+
+    char chaine1[100];
+    char chaine2[100];
+    char result[200];
+    int longueur =0;
+
+    printf("entrez une chaine de caracteres 1 svp : ");
+    scanf("%s",chaine1);
+
+    printf("entrez une chaine de caracteres 2 svp : ");
+    scanf("%s",chaine2);
+    strcat(result, chaine1);
+    strcat(result, chaine2);
+
+    printf("la chaîne résultante est :  %s",result);
+
+    return 0;
+
+}
+
+
