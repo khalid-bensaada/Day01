@@ -45,3 +45,25 @@ int main(){
     
     }
 }
+
+chalange 3
+
+#include<stdio.h>
+struct rectangle{
+     float longueur ;
+     float  largeur;
+};
+
+int main(){
+    struct rectangle n ;
+    float aire;
+
+    printf("Plaese enter longueur: ");
+    scanf("%f",&n.longueur);
+
+    printf("Plaese enter largeur:");
+    scanf("%f",&n.largeur);
+
+    aire = n.longueur * n.largeur;
+    printf("the total is : %.2f",aire);
+}
