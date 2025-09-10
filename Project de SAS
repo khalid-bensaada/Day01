@@ -75,11 +75,10 @@ void Agebobble(player max[],int n){
 }
 void total(player max[], int n){
     for(int i = 0 ; i < n ; i++){
-     printf("ID : %d | name: %s | last name: %s | age: %d | position: %s | number of shirt: %d | goals: %d \n",max[i].id,max[i].name,max[i].lname,max[i].age,max[i].position,max[i].shirt,max[i].goal);
+     printf("ID : %d |\n| name: %s |\n| last name: %s |\n| age: %d |\n| position: %s |\n| number of shirt: %d |\n| goals: %d |\n",max[i].id,max[i].name,max[i].lname,max[i].age,max[i].position,max[i].shirt,max[i].goal);
    
    } 
 }
-
 
 
 void editage(){
@@ -163,20 +162,57 @@ void editgoal(){
   
 }
 
+ 
+void findname(){
+    char name[100];
+
+    printf("Please enter the name you want: ");
+    scanf("%s",name);
+
+    for(int i = 0 ; i < play ; i++){
+        if (strcmp(max[i].name,name)==0){
+            printf("player found \n");
+            printf("ID : %d |\n| name: %s |\n| last name: %s |\n| age: %d |\n| position: %s |\n| number of shirt: %d |\n| goals: %d |\n",max[i].id,max[i].name,max[i].lname,max[i].age,max[i].position,max[i].shirt,max[i].goal);
+            return;
+        }
+        
+    }
+    printf ("the player not found \n");
+}
+
+int findid(){
+    int id;
+
+    printf("Please enter the name you want: ");
+    scanf("%s",&id);
+
+    for(int i = 0 ; i < play ; i++){
+        if (max[i].id==id){
+            printf("player found \n");
+            printf("ID : %d |\n| name: %s |\n| last name: %s |\n| age: %d |\n| position: %s |\n| number of shirt: %d |\n| goals: %d |\n",max[i].id,max[i].name,max[i].lname,max[i].age,max[i].position,max[i].shirt,max[i].goal);
+            return ;
+        }
+        
+    }
+    printf ("the player not found \n");
+}
+
 
   
 int main(){
   int choice;
   int show ;
+  int n;
 
     mune:{
         printf("======== Mune ========\n");
-        printf("1 - Ajouter un joueur :\n");
-        printf("2 - Afficher la liste de tous les joueurs :\n");
-        printf("3 - Modifier un joueur :\n");
-        printf("4 - Rechercher un joueur :\n");
-        printf("5 - Supprimer un joueur :\n");
-        printf("6 - Statistiques :\n");
+        printf("\n1 - Ajouter un joueur :\n");
+        printf("\n2 - Afficher la liste de tous les joueurs :\n");
+        printf("\n3 - Modifier un joueur :\n");
+        printf("\n4 - Rechercher un joueur :\n");
+        printf("\n5 - Supprimer un joueur :\n");
+        printf("\n6 - Statistiques :\n");
+        printf("\n7 - Exit");
     }
 
     printf("please enter your choice: ");
@@ -189,15 +225,45 @@ int main(){
         goto mune;
         break;
     case 2:
-        printf("please enter how you want to wacht the list");
-        printf("if u want whit [names enter : 1 or age : 2 or position white your choice :3 ] : ");
-        scanf("%d",&show);
+        
         goto mune;
         break;
     case 3:
+        printf("please enter how you want to wacht the list");
+        printf("if u want whit [names enter : 1 or age : 2 or position white your choice :3 ] : ");
+        scanf("%d",&show);
+
+        if (show = 1){
+            Nbobble(max, n);
+            total(max, n);
+            goto mune;
+        break;
+        }else if(show = 2){
+            Agebobble(max, n);
+            total(max, n);
+            goto mune;
+        break;
+        }else if(show = 3){
+
+        }
         goto mune;
         break;
     case 4:
+        printf("please enter how you want to search ");
+        printf("if u want whit [names enter : 1 or id : 2 ] : ");
+        scanf("%d",&show);
+        if (show = 1){
+            findname();
+            goto mune;
+        break;
+        }else if(show = 2){
+            findid();
+            goto mune;
+        break;
+        }else{
+            
+        }
+        
         goto mune;
         break;
     case 5:
