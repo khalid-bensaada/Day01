@@ -113,6 +113,23 @@ void editage(){
 }
 
 void editpost(){
+    int found = 0;
+
+    char post[100];
+
+    printf("Enter the position you want to search : ");
+    scanf("%s",post);
+
+    for(int i = 0 ; i < play ;i++){
+        if(strcmp(max[i].position,post)==0){
+            printf("ID : %d |\n| name: %s |\n| last name: %s |\n| age: %d |\n| position: %s |\n| number of shirt: %d |\n| goals: %d |\n",max[i].id,max[i].name,max[i].lname,max[i].age,max[i].position,max[i].shirt,max[i].goal);
+            
+            found = 1 ;
+        }else{
+            printf("Sorry the position you entered is not definde.");
+            found = 0;
+        }
+    }
 
   
 }
@@ -180,7 +197,34 @@ int findid(){
     return 0;
 }
 
+int deleted(){
+    int id;
+    char yn;
+    
+    printf("Please enter the ID you want to delet: ");
+    scanf("%d",&id);
 
+    printf("are you sure for deleted enter if you are sure enter yes: ");
+    scanf("%s",yn);
+
+    if(yn=="yes"){
+
+        for (int i = 0 ; i < play;  i++){
+        if (max[i].id==id){
+            for (int j = i ; j < play - 1 ; j++){
+                max[j] = max[j+1];
+            }
+            play--;
+            printf("Successful delete \n");
+            return;
+        }
+    }
+    printf ("the player not found \n");
+    }else{
+        printf("ok the player not deleted");
+    }
+    
+}
   
 int main(){
   int choice;
@@ -227,10 +271,14 @@ int main(){
             goto mune;
         break;
         }else if(show == 3){
-
-        }
-        goto mune;
+            editpost();
+            goto mune;
         break;
+        }else{
+            printf("invalid choice ");
+             goto mune;
+        break;
+        }
     case 4:
         printf("please enter how you want to search ");
         printf("if u want whit [names enter : 1 or id : 2 ] : ");
@@ -250,6 +298,7 @@ int main(){
         goto mune;
         break;
     case 5:
+        deleted();
         goto mune;
         break;
     case 6:
