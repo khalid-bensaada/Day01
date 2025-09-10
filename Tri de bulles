@@ -1,0 +1,44 @@
+chalange 1
+
+
+#include <stdio.h>
+
+void user(int tab[],int n){
+    for(int i = 0; i < n ;i++){
+        printf("Enter les elements: ");
+        scanf("%d",&tab[i]);
+    }
+}
+
+void bobble(int tab[],int n){
+    for(int i = 0 ; i < n - 1 ; i++){
+        for (int j = i ; j < n - i - 1 ; j++ ){
+            if (tab[j] > tab[j + 1]){
+                int temp = tab[j];
+                tab[j] = tab[j+1];
+                tab[j+1] = temp;
+            }
+        }
+    }
+}
+
+void aff(int tab[],int n){
+    for(int i = 0 ; i < n ; i++){
+        printf("rab[%d] = %d\n",i,tab[i]);
+    }
+}
+
+int main(){
+    int  n;
+    int tab[n];
+
+    printf("enter how many elem you want: ");
+    scanf("%d",&n);
+
+    user(tab,n);
+    bobble(tab,n);
+    aff(tab,n);
+    
+
+return 0;
+}
