@@ -48,16 +48,41 @@ void formations(){
   }
 }
 
-void seeAll(){
- 
-   printf("=== List of all players ===\n");
-   
-   for(int i = 0 ; i < play ; i++){
-     printf("ID : %d | name: %s | last name: %s | age: %d | position: %s | number of shirt: %d | goals: %d \n",max[i].id,max[i].name,max[i].lname,max[i].age,max[i].position,max[i].shirt,max[i].goal);
-   }
+void Nbobble(player max[],int n){
+    player tmp;
+    for(int i = 0 ; i < n - 1; i++){
+        for(int j = 0 ; j < n - i - 1;j++){
+            if (strcmp(max[j].name,max[j+1].name)>0)
+                tmp = max[j];
+                max[j]=max[j + 1];
+                max[j + 1]=tmp;
+        }
+    }
+    
 }
 
-void edit(){
+void Agebobble(player max[],int n){
+    player tmp;
+    for(int i = 0 ; i < n - 1; i++){
+        for(int j = 0 ; j < n - i - 1;j++){
+            if (strcmp(max[j].age,max[j+1].age)>0)
+                tmp = max[j];
+                max[j]=max[j + 1];
+                max[j + 1]=tmp;
+        }
+    }
+    
+}
+void total(player max[], int n){
+    for(int i = 0 ; i < n ; i++){
+     printf("ID : %d | name: %s | last name: %s | age: %d | position: %s | number of shirt: %d | goals: %d \n",max[i].id,max[i].name,max[i].lname,max[i].age,max[i].position,max[i].shirt,max[i].goal);
+   
+   } 
+}
+
+
+
+void editage(){
   int srch;
   
   printf("please enter the ID of the player: ");
@@ -67,20 +92,13 @@ void edit(){
   
   for(int i = 0 ; i < play ; i++){
     
-    if(strcmp(srch == max[i].id){
+    if( max[i].id == srch ){
       
       found = 1;
       
       printf("Enter the new age: ");
       scanf("%d",&max[i].age);
       
-      printf("Enter the new position: ");
-      scanf("%s",max[i].position);
-      
-      printf("Enter the new goals: ");
-      scanf("%d",&max[i].goal);
-      
-      printf("successfully");
       
       break;
     }
@@ -90,11 +108,109 @@ void edit(){
   }
   
 }
+
+void editpost(){
+  int srch;
+  
+  printf("please enter the ID of the player: ");
+  scanf("%d",&srch);
+  
+  int found = 0;
+  
+  for(int i = 0 ; i < play ; i++){
+    
+    if(max[i].id == srch){
+      
+      found = 1;
+      
+      printf("Enter the new position: ");
+      scanf("%d",max[i].position);
+      
+      
+      break;
+    }
+    if (!found){
+      printf("invalid id");
+    }
+  }
+  
+}
+
+void editgoal(){
+  int srch;
+  
+  printf("please enter the ID of the player: ");
+  scanf("%d",&srch);
+  
+  int found = 0;
+  
+  for(int i = 0 ; i < play ; i++){
+    
+    if(max[i].id == srch){
+      
+      found = 1;
+      
+      printf("Enter the new goals: ");
+      scanf("%d",&max[i].goal);
+      
+      
+      break;
+    }
+    if (!found){
+      printf("invalid id");
+    }
+  }
+  
+}
+
+
   
 int main(){
-  
-  formations();
-  seeAll();
-  edit();
+  int choice;
+  int show ;
+
+    mune:{
+        printf("======== Mune ========\n");
+        printf("1 - Ajouter un joueur :\n");
+        printf("2 - Afficher la liste de tous les joueurs :\n");
+        printf("3 - Modifier un joueur :\n");
+        printf("4 - Rechercher un joueur :\n");
+        printf("5 - Supprimer un joueur :\n");
+        printf("6 - Statistiques :\n");
+    }
+
+    printf("please enter your choice: ");
+    scanf("%d",&choice);
+
+    switch (choice)
+    {
+    case 1:
+        formations();
+        goto mune;
+        break;
+    case 2:
+        printf("please enter how you want to wacht the list");
+        printf("if u want whit [names enter : 1 or age : 2 or position white your choice :3 ] : ");
+        scanf("%d",&show);
+        goto mune;
+        break;
+    case 3:
+        goto mune;
+        break;
+    case 4:
+        goto mune;
+        break;
+    case 5:
+        goto mune;
+        break;
+    case 6:
+        goto mune;
+        break;
+    case 7:
+        goto mune;
+        break;
+    default:
+        break;
+    }
   return 0;
 }
