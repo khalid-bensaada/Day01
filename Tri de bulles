@@ -42,3 +42,52 @@ int main(){
 
 return 0;
 }
+
+CHALLANGE 2
+
+
+#include <stdio.h>
+
+void user(int tab[],int n){
+    for(int i = 0; i < n ;i++){
+        printf("Enter les elements: ");
+        scanf("%d",&tab[i]);
+    }
+}
+
+void inst(int tab[],int n){
+    int i , key , j ;
+    for(i = 1 ; i < n ; i++){
+        key = tab[i];
+        j = i - 1 ;
+
+        while(j >= 0 && tab[j] > key){
+            tab[j+1] = tab[j] ;
+            j--;
+        }
+        tab[j+1] = key;
+    }   
+
+}
+
+void aff(int tab[],int n){
+    for(int i = 0 ; i < n ; i++){
+        printf("rab[%d] = %d\n",i,tab[i]);
+    }
+}
+
+int main(){
+    int  n;
+    int tab[n];
+
+    printf("enter how many elem you want: ");
+    scanf("%d",&n);
+
+    user(tab,n);
+    aff(tab,n);
+    inst(tab,n);
+    
+    
+
+return 0;
+}
