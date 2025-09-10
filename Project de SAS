@@ -17,7 +17,7 @@ int play=0;
   
 void formations(){
   int n;
-  int numid = 1;
+  
   printf("please enter how many player you want to enter: ");
   scanf("%d",&n);
   
@@ -43,7 +43,7 @@ void formations(){
     
     printf("please enter how many goals The player score: ");
     scanf("%d",&max[play].goal);
-    max[play].id = numid++;
+    max[play].id = play + 1;
     play++;
   }
 }
@@ -63,7 +63,7 @@ void Nbobble(player max[],int n){
     
 }
 
-int Agebobble(player max[],int n){
+void Agebobble(player max[],int n){
     player tmp;
     for(int i = 0 ; i < n - 1; i++){
         for(int j = 0 ; j < n - i - 1;j++){
@@ -105,34 +105,34 @@ void editage(){
       
       break;
     }
-    if (!found){
+    
+  }
+  if (!found){
       printf("invalid id");
     }
-  }
   
 }
 
 void editpost(){
     int found = 0;
-
     char post[100];
 
     printf("Enter the position you want to search : ");
     scanf("%s",post);
 
-    for(int i = 0 ; i < play ;i++){
+    for(int i = 0 ; i < play ; i++){
         if(strcmp(max[i].position,post)==0){
-            printf("ID : %d |\n| name: %s |\n| last name: %s |\n| age: %d |\n| position: %s |\n| number of shirt: %d |\n| goals: %d |\n",max[i].id,max[i].name,max[i].lname,max[i].age,max[i].position,max[i].shirt,max[i].goal);
-            
-            found = 1 ;
-        }else{
-            printf("Sorry the position you entered is not definde.");
-            found = 0;
+            printf("ID : %d |\n| name: %s |\n| last name: %s |\n| age: %d |\n| position: %s |\n| number of shirt: %d |\n| goals: %d |\n",
+                   max[i].id,max[i].name,max[i].lname,max[i].age,max[i].position,max[i].shirt,max[i].goal);
+            found = 1;
         }
     }
 
-  
+    if (!found){
+        printf("Sorry the position you entered is not defined.\n");
+    }
 }
+
 
 void editgoal(){
   int srch;
@@ -154,10 +154,11 @@ void editgoal(){
       
       break;
     }
-    if (!found){
+   
+  }
+   if (!found){
       printf("invalid id");
     }
-  }
   
 }
 
@@ -197,39 +198,40 @@ int findid(){
     return 0;
 }
 
-int deleted(){
+void deleted(){
     int id;
-    char yn;
+    char yn[10];
+    int found = 0;
     
-    printf("Please enter the ID you want to delet: ");
+    printf("Please enter the ID you want to delete: ");
     scanf("%d",&id);
 
-    printf("are you sure for deleted enter if you are sure enter yes: ");
+    printf("Are you sure? enter yes to confirm: ");
     scanf("%s",yn);
 
-    if(yn=="yes"){
-
-        for (int i = 0 ; i < play;  i++){
-        if (max[i].id==id){
-            for (int j = i ; j < play - 1 ; j++){
-                max[j] = max[j+1];
+    if(strcmp(yn, "yes")==0){
+        for (int i = 0 ; i < play; i++){
+            if (max[i].id==id){
+                for (int j = i ; j < play - 1 ; j++){
+                    max[j] = max[j+1];
+                }
+                play--;
+                printf("Successful delete \n");
+                found = 1;
+                break;
             }
-            play--;
-            printf("Successful delete \n");
-            return;
         }
-    }
-    printf ("the player not found \n");
+        if (!found){
+            printf("The player not found \n");
+        }
     }else{
-        printf("ok the player not deleted");
+        printf("Ok, the player not deleted\n");
     }
-    
 }
   
 int main(){
   int choice;
   int show ;
-  int play;
 
     mune:{
         printf("======== Mune ========\n");
@@ -292,11 +294,11 @@ int main(){
             goto mune;
         break;
         }else{
-            
+            printf("invalid choice");
+             goto mune;
+        break;
         }
         
-        goto mune;
-        break;
     case 5:
         deleted();
         goto mune;
@@ -305,9 +307,11 @@ int main(){
         goto mune;
         break;
     case 7:
-        goto mune;
+        printf("see you later");
         break;
     default:
+        printf("invalid choice");
+        goto mune;
         break;
     }
   return 0;
