@@ -52,23 +52,27 @@ void Nbobble(player max[],int n){
     player tmp;
     for(int i = 0 ; i < n - 1; i++){
         for(int j = 0 ; j < n - i - 1;j++){
-            if (strcmp(max[j].name,max[j+1].name)>0)
-                tmp = max[j];
-                max[j]=max[j + 1];
-                max[j + 1]=tmp;
+            if (strcmp(max[j].name,max[j+1].name)>0){
+                  tmp = max[j];
+                  max[j]=max[j + 1];
+                  max[j + 1]=tmp;
+            }
+              
         }
     }
     
 }
 
-void Agebobble(player max[],int n){
+int Agebobble(player max[],int n){
     player tmp;
     for(int i = 0 ; i < n - 1; i++){
         for(int j = 0 ; j < n - i - 1;j++){
-            if (strcmp(max[j].age,max[j+1].age)>0)
+            if ((max[j].age > max[j+1].age)){
                 tmp = max[j];
                 max[j]=max[j + 1];
-                max[j + 1]=tmp;
+                max[j + 1]=tmp;  
+            }
+                
         }
     }
     
@@ -109,29 +113,7 @@ void editage(){
 }
 
 void editpost(){
-  int srch;
-  
-  printf("please enter the ID of the player: ");
-  scanf("%d",&srch);
-  
-  int found = 0;
-  
-  for(int i = 0 ; i < play ; i++){
-    
-    if(max[i].id == srch){
-      
-      found = 1;
-      
-      printf("Enter the new position: ");
-      scanf("%d",max[i].position);
-      
-      
-      break;
-    }
-    if (!found){
-      printf("invalid id");
-    }
-  }
+
   
 }
 
@@ -183,18 +165,19 @@ void findname(){
 int findid(){
     int id;
 
-    printf("Please enter the name you want: ");
-    scanf("%s",&id);
+    printf("Please enter the ID you want: ");
+    scanf("%d",&id);
 
     for(int i = 0 ; i < play ; i++){
         if (max[i].id==id){
             printf("player found \n");
             printf("ID : %d |\n| name: %s |\n| last name: %s |\n| age: %d |\n| position: %s |\n| number of shirt: %d |\n| goals: %d |\n",max[i].id,max[i].name,max[i].lname,max[i].age,max[i].position,max[i].shirt,max[i].goal);
-            return ;
+            return 1;
         }
         
     }
     printf ("the player not found \n");
+    return 0;
 }
 
 
@@ -202,7 +185,7 @@ int findid(){
 int main(){
   int choice;
   int show ;
-  int n;
+  int play;
 
     mune:{
         printf("======== Mune ========\n");
@@ -233,17 +216,17 @@ int main(){
         printf("if u want whit [names enter : 1 or age : 2 or position white your choice :3 ] : ");
         scanf("%d",&show);
 
-        if (show = 1){
-            Nbobble(max, n);
-            total(max, n);
+        if (show == 1){
+            Nbobble(max, play);
+            total(max, play);
             goto mune;
         break;
-        }else if(show = 2){
-            Agebobble(max, n);
-            total(max, n);
+        }else if(show == 2){
+            Agebobble(max, play);
+            total(max, play);
             goto mune;
         break;
-        }else if(show = 3){
+        }else if(show == 3){
 
         }
         goto mune;
@@ -252,11 +235,11 @@ int main(){
         printf("please enter how you want to search ");
         printf("if u want whit [names enter : 1 or id : 2 ] : ");
         scanf("%d",&show);
-        if (show = 1){
+        if (show == 1){
             findname();
             goto mune;
         break;
-        }else if(show = 2){
+        }else if(show == 2){
             findid();
             goto mune;
         break;
