@@ -277,16 +277,17 @@ void Tplayers(){
 void moyenage(){
     if(play == 0){
         printf("sorry we don't have players");
+        return;
     }
-    int sum ;
+    int sum = 0;
 
     for (int i = 0 ; i < play ; i++){
         sum = sum + max[i].age;
     }
 
-    float myn = sum / play ;
+    int myn = (int)sum / play ;
 
-    printf("the moyen of age is : %.2f \n",&myn);
+    printf("the moyen of age is : %d \n",myn);
 }
 
 // statistique affichage goals of searche
@@ -341,13 +342,13 @@ void youngplayer(player max[],int n){
 
     int young = 0;
 
-    for(int i = 0 ; i < n ; i++){
+    for(int i = 1 ; i < n ; i++){
         if(max[i].age < max[young].age){
             young = i;
         }
     
     }
-    printf("ID : %d |\n| name: %s |\n| last name: %s |\n| age: %d |\n| position: %s |\n| number of shirt: %d |\n| goals: %d |\n",max[play].id,max[play].name,max[play].lname,max[play].age,max[play].position,max[play].shirt,max[play].goal);
+    printf("ID : %d |\n| name: %s |\n| last name: %s |\n| age: %d |\n| position: %s |\n| number of shirt: %d |\n| goals: %d |\n",max[young].id,max[young].name,max[young].lname,max[young].age,max[young].position,max[play].shirt,max[play].goal);
 }
 
 //stastique old player 
