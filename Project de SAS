@@ -157,7 +157,7 @@ void editpost(){
       found = 1;
       
       printf("Enter the new position: ");
-      scanf("%d",&max[i].position);
+      scanf("%s",&max[i].position);
       
       
       break;
@@ -285,9 +285,9 @@ void moyenage(){
         sum = sum + max[i].age;
     }
 
-    int myn = (int)sum / play ;
+    float myn = (float)sum / play ;
 
-    printf("the moyen of age is : %d \n",myn);
+    printf("the moyen of age is : %.2f\n",myn);
 }
 
 // statistique affichage goals of searche
@@ -309,7 +309,7 @@ void searchgoals(player max[],int n, int g ){
 
         if(max[i].goal >= g){
             printf("ID : %d |\n| name: %s |\n| last name: %s |\n| age: %d |\n| position: %s |\n| number of shirt: %d |\n| goals: %d |\n",max[i].id,max[i].name,max[i].lname,max[i].age,max[i].position,max[i].shirt,max[i].goal);
-            found == 1;
+            found =1;
         }
     }
     if(!found){
@@ -333,7 +333,8 @@ void topscore(player max[],int n){
         }
     
     }
-    printf("ID : %d |\n| name: %s |\n| last name: %s |\n| age: %d |\n| position: %s |\n| number of shirt: %d |\n| goals: %d |\n",max[play].id,max[play].name,max[play].lname,max[play].age,max[play].position,max[play].shirt,max[play].goal);
+    printf("ID : %d |\n| name: %s |\n| last name: %s |\n| age: %d |\n| position: %s |\n| number of shirt: %d |\n| goals: %d |\n",
+       max[top].id, max[top].name, max[top].lname, max[top].age, max[top].position, max[top].shirt, max[top].goal);
 }
 
 
@@ -348,24 +349,30 @@ void youngplayer(player max[],int n){
         }
     
     }
-    printf("ID : %d |\n| name: %s |\n| last name: %s |\n| age: %d |\n| position: %s |\n| number of shirt: %d |\n| goals: %d |\n",max[young].id,max[young].name,max[young].lname,max[young].age,max[young].position,max[play].shirt,max[play].goal);
+   printf("ID : %d |\n| name: %s |\n| last name: %s |\n| age: %d |\n| position: %s |\n| number of shirt: %d |\n| goals: %d |\n",
+       max[young].id, max[young].name, max[young].lname, max[young].age, max[young].position, max[young].shirt, max[young].goal);
+
 }
 
 //stastique old player 
-void oldplayer(player max[],int n){
+void oldplayer(player max[], int n) {
+    if (n == 0) {
+        printf("No players available.\n");
+        return;
+    }
 
     int old = 0;
 
-    for(int i = 0 ; i < n ; i++){
-        if(max[i].age < max[old].age){
+    for (int i = 1; i < n; i++) {
+        if (max[i].age > max[old].age) { 
             old = i;
         }
-    
     }
-    printf("ID: %d | Name: %s | Last name: %s | Age: %d | Position: %s | Shirt number: %d | Goals: %d\n",
-       max[play].id, max[play].name, max[play].lname, max[play].age, max[play].position, max[play].shirt, max[play].goal);
 
+    printf("ID: %d | Name: %s | Last name: %s | Age: %d | Position: %s | Shirt number: %d | Goals: %d\n",
+           max[old].id, max[old].name, max[old].lname, max[old].age, max[old].position, max[old].shirt, max[old].goal);
 }
+
 
 
 // mune de statistique
@@ -398,10 +405,11 @@ void statisticsMenu() {
                 goto mune;
                 break;
             case 3: 
-                searchgoals(max,n,g);
-                usergoals();
+                g = usergoals();
+                searchgoals(max, n, g);
                 goto mune;
                 break;
+
             case 4: 
                 youngplayer(max,n);
                 goto mune;
@@ -449,7 +457,7 @@ int main(){
         break;
 
     case 2:
-        printf("please enter how you want to wacht the list");
+        printf("please enter how you want to wacht the list\n");
         printf("if u want whit [names enter : 1 or age : 2 or position white your choice :3 ] : ");
         scanf("%d",&show);
 
