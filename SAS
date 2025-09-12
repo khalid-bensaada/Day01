@@ -1,0 +1,545 @@
+#include <stdio.h>
+#include <string.h>
+
+typedef struct {
+  
+  int id;
+  char name[100];
+  char lname[100];
+  char position[100];
+  int age;
+  int shirt;
+  int goal; 
+ 
+}player;
+player max[100];
+int play=0;
+
+// formatoins of the player
+void formations(){
+  int n;
+  
+  printf("please enter how many player you want to enter: ");
+  scanf("%d",&n);
+  
+  for(int i = 0 ; i < n ; i++){
+    if (play >= 100){
+      printf("sorry we don't have space ");
+      break;
+    }
+    printf("please enter the name of the player: ");
+    scanf("%s",max[play].name);
+    
+    printf("please enter last name of the player: ");
+    scanf("%s",max[play].lname);
+    
+    printf("please enter the age of the player: ");
+    scanf("%d",&max[play].age);
+    
+    printf("please enter the position of the player [ goalkeeper ; defender ; medfielder ; forwared ]: ");
+    scanf("%s",max[play].position);
+    
+    printf("please enter the number of the shirt: ");
+    scanf("%d",&max[play].shirt);
+    
+    printf("please enter how many goals The player score: ");
+    scanf("%d",&max[play].goal);
+    max[play].id = play + 1;
+    play++;
+  }
+}
+
+
+ //  trre bobble to see list whit name
+void Nbobble(player max[],int n){
+    player tmp;
+    for(int i = 0 ; i < n - 1; i++){
+        for(int j = 0 ; j < n - i - 1;j++){
+            if (strcmp(max[j].name,max[j+1].name)>0){
+                  tmp = max[j];
+                  max[j]=max[j + 1];
+                  max[j + 1]=tmp;
+            }
+              
+        }
+    }
+    
+}
+ // Tree bobble to see list whit age
+void Agebobble(player max[],int n){
+    player tmp;
+    for(int i = 0 ; i < n - 1; i++){
+        for(int j = 0 ; j < n - i - 1;j++){
+            if ((max[j].age > max[j+1].age)){
+                tmp = max[j];
+                max[j]=max[j + 1];
+                max[j + 1]=tmp;  
+            }
+                
+        }
+    }
+    
+}
+
+ // see list whit position
+void srchpost(){
+    int found = 0;
+    char post[100];
+
+    printf("Enter the position you want to search : ");
+    scanf("%s",post);
+
+    for(int i = 0 ; i < play ; i++){
+        if(strcmp(max[i].position,post)==0){
+            printf("ID : %d |\n| name: %s |\n| last name: %s |\n| age: %d |\n| position: %s |\n| number of shirt: %d |\n| goals: %d |\n",
+                   max[i].id,max[i].name,max[i].lname,max[i].age,max[i].position,max[i].shirt,max[i].goal);
+            found = 1;
+        }
+    }
+
+    if (!found){
+        printf("Sorry the position you entered is not defined.\n");
+    }
+}
+
+//affichage de list
+void total(player max[], int n){
+    for(int i = 0 ; i < n ; i++){
+     printf("ID : %d |\n| name: %s |\n| last name: %s |\n| age: %d |\n| position: %s |\n| number of shirt: %d |\n| goals: %d |\n",max[i].id,max[i].name,max[i].lname,max[i].age,max[i].position,max[i].shirt,max[i].goal);
+   
+   } 
+}
+
+
+// edit the age 
+void editage(){
+  int srch;
+  
+  printf("please enter the ID of the player: ");
+  scanf("%d",&srch);
+  
+  int found = 0;
+  
+  for(int i = 0 ; i < play ; i++){
+    
+    if( max[i].id == srch ){
+      
+      found = 1;
+      
+      printf("Enter the new age: ");
+      scanf("%d",&max[i].age);
+      
+      
+      break;
+    }
+    
+  }
+  if (!found){
+      printf("invalid id");
+    }
+  
+}
+
+
+// edit position
+void editpost(){
+  int srch;
+  
+  printf("please enter the ID of the player: ");
+  scanf("%d",&srch);
+  
+  int found = 0;
+  
+  for(int i = 0 ; i < play ; i++){
+    
+    if(max[i].id == srch){
+      
+      found = 1;
+      
+      printf("Enter the new position: ");
+      scanf("%s",&max[i].position);
+      
+      
+      break;
+    }
+   
+  }
+   if (!found){
+      printf("invalid id");
+    }
+  
+}
+// editthe goals 
+void editgoal(){
+  int srch;
+  
+  printf("please enter the ID of the player: ");
+  scanf("%d",&srch);
+  
+  int found = 0;
+  
+  for(int i = 0 ; i < play ; i++){
+    
+    if(max[i].id == srch){
+      
+      found = 1;
+      
+      printf("Enter the new goals: ");
+      scanf("%d",&max[i].goal);
+      
+      
+      break;
+    }
+   
+  }
+   if (!found){
+      printf("invalid id");
+    }
+  
+}
+
+//  searche whit the name
+void findname(){
+    char name[100];
+
+    printf("Please enter the name you want: ");
+    scanf("%s",name);
+
+    for(int i = 0 ; i < play ; i++){
+        if (strcmp(max[i].name,name)==0){
+            printf("player found \n");
+            printf("ID : %d |\n| name: %s |\n| last name: %s |\n| age: %d |\n| position: %s |\n| number of shirt: %d |\n| goals: %d |\n",max[i].id,max[i].name,max[i].lname,max[i].age,max[i].position,max[i].shirt,max[i].goal);
+            return;
+        }
+        
+    }
+    printf ("the player not found \n");
+}
+
+// searche white ID
+int findid(){
+    int id;
+
+    printf("Please enter the ID you want: ");
+    scanf("%d",&id);
+
+    for(int i = 0 ; i < play ; i++){
+        if (max[i].id==id){
+            printf("player found \n");
+            printf("ID : %d |\n| name: %s |\n| last name: %s |\n| age: %d |\n| position: %s |\n| number of shirt: %d |\n| goals: %d |\n",max[i].id,max[i].name,max[i].lname,max[i].age,max[i].position,max[i].shirt,max[i].goal);
+            return 1;
+        }
+        
+    }
+    printf ("the player not found \n");
+    return 0;
+}
+
+// delet the player
+void deleted(){
+    int id;
+    char yn[10];
+    int found = 0;
+    
+    printf("Please enter the ID you want to delete: ");
+    scanf("%d",&id);
+
+    printf("Are you sure? enter yes to confirm: ");
+    scanf("%s",yn);
+
+    if(strcmp(yn, "yes")==0){
+        for (int i = 0 ; i < play; i++){
+            if (max[i].id==id){
+                for (int j = i ; j < play - 1 ; j++){
+                    max[j] = max[j+1];
+                }
+                play--;
+                printf("Successful delete \n");
+                found = 1;
+                break;
+            }
+        }
+        if (!found){
+            printf("The player not found \n");
+        }
+    }else{
+        printf("Ok, the player not deleted\n");
+    }
+}
+
+
+// statistique totale players 
+void Tplayers(){
+    printf("Total players is : %d ", play);
+}
+
+// statistique moyen age 
+void moyenage(){
+    if(play == 0){
+        printf("sorry we don't have players");
+        return;
+    }
+    int sum = 0;
+
+    for (int i = 0 ; i < play ; i++){
+        sum = sum + max[i].age;
+    }
+
+    float myn = (float)sum / play ;
+
+    printf("the moyen of age is : %.2f\n",myn);
+}
+
+// statistique affichage goals of searche
+int usergoals(){
+    int g;
+    
+    printf("Please enter number of goals : ");
+    scanf("%d",&g);
+    return g;
+}
+
+// statistique goals mor than goals of user whit search linear 
+void searchgoals(player max[],int n, int g ){
+    int found=0;
+
+    printf("the players whit goals egal %d or more than that is : \n",g);
+
+    for(int i = 0 ; i < n ; i++ ){
+
+        if(max[i].goal >= g){
+            printf("ID : %d |\n| name: %s |\n| last name: %s |\n| age: %d |\n| position: %s |\n| number of shirt: %d |\n| goals: %d |\n",max[i].id,max[i].name,max[i].lname,max[i].age,max[i].position,max[i].shirt,max[i].goal);
+            found =1;
+        }
+    }
+    if(!found){
+        printf("sorry we don't found a players with gols like %d or more ",g);
+    }
+}
+  
+
+// statistique of top player score 
+void topscore(player max[],int n){
+    
+    if(play == 0 ){
+        printf("sorry we dont have players \n");
+    }
+    
+    int top = 0;
+
+    for(int i = 0 ; i < n ; i++){
+        if(max[i].goal > max[top].goal){
+            top = i;
+        }
+    
+    }
+    printf("ID : %d |\n| name: %s |\n| last name: %s |\n| age: %d |\n| position: %s |\n| number of shirt: %d |\n| goals: %d |\n",
+       max[top].id, max[top].name, max[top].lname, max[top].age, max[top].position, max[top].shirt, max[top].goal);
+}
+
+
+//stastique younger player 
+void youngplayer(player max[],int n){
+
+    int young = 0;
+
+    for(int i = 1 ; i < n ; i++){
+        if(max[i].age < max[young].age){
+            young = i;
+        }
+    
+    }
+   printf("ID : %d |\n| name: %s |\n| last name: %s |\n| age: %d |\n| position: %s |\n| number of shirt: %d |\n| goals: %d |\n",
+       max[young].id, max[young].name, max[young].lname, max[young].age, max[young].position, max[young].shirt, max[young].goal);
+
+}
+
+//stastique old player 
+void oldplayer(player max[], int n) {
+    if (n == 0) {
+        printf("No players available.\n");
+        return;
+    }
+
+    int old = 0;
+
+    for (int i = 1; i < n; i++) {
+        if (max[i].age > max[old].age) { 
+            old = i;
+        }
+    }
+
+    printf("ID: %d | Name: %s | Last name: %s | Age: %d | Position: %s | Shirt number: %d | Goals: %d\n",
+           max[old].id, max[old].name, max[old].lname, max[old].age, max[old].position, max[old].shirt, max[old].goal);
+}
+
+
+
+// mune de statistique
+void statisticsMenu() {
+    int choice;
+    int n,g;
+    
+        mune:{
+            printf("\n===== Statistics Menu =====\n");
+            printf("1 - Total players\n");
+            printf("2 - Average age\n");
+            printf("3 - Total goals\n");
+            printf("4 - Youngest player\n");
+            printf("5 - Oldest player\n");
+            printf("6 - Top scorer\n");
+            printf("7 - Exit\n");
+
+        }
+        
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                Tplayers(); 
+                goto mune;
+                break;
+            case 2: 
+                moyenage(); 
+                goto mune;
+                break;
+            case 3: 
+                g = usergoals();
+                searchgoals(max, n, g);
+                goto mune;
+                break;
+
+            case 4: 
+                youngplayer(max,n);
+                goto mune;
+                break;
+            case 5: 
+                oldplayer(max,n); 
+                goto mune;
+                break;
+            case 6: 
+                topscore(max,n); 
+                goto mune;
+                break;
+            case 7: 
+                printf("ok");
+                break;
+            default: printf("Invalid choice\n"); break;
+        }
+   
+}
+
+
+int main(){
+  int choice;
+  int show ;
+
+    mune:{
+        printf("======== Mune ========\n");
+        printf("\n1 - Ajouter un joueur :\n");
+        printf("\n2 - Afficher la liste de tous les joueurs :\n");
+        printf("\n3 - Modifier un joueur :\n");
+        printf("\n4 - Rechercher un joueur :\n");
+        printf("\n5 - Supprimer un joueur :\n");
+        printf("\n6 - Statistiques :\n");
+        printf("\n7 - Exit\n");
+    }
+
+    printf("please enter your choice: ");
+    scanf("%d",&choice);
+
+    switch (choice)
+    {
+    case 1:
+        formations();
+        goto mune;
+        break;
+
+    case 2:
+        printf("please enter how you want to wacht the list\n");
+        printf("if u want whit [names enter : 1 or age : 2 or position white your choice :3 ] : ");
+        scanf("%d",&show);
+
+        if (show == 1){
+            Nbobble(max, play);
+            total(max, play);
+            goto mune;
+        break;
+        }else if(show == 2){
+            Agebobble(max, play);
+            total(max, play);
+            goto mune;
+        break;
+        }else if(show == 3){
+            srchpost();
+            goto mune;
+        break;
+        }else{
+            printf("invalid choice ");
+             goto mune;
+        break;
+        }
+    
+    case 3:
+        printf("please enter what u want to edit whit ID \n");
+        printf("if u want edit [age enter : 1 or position : 2 or goals: 3] :");
+        scanf("%d",&show);
+
+        if (show == 1){
+            editage();
+            
+            goto mune;
+        break;
+        }else if(show == 2){
+            editpost();
+            
+            goto mune;
+        break;
+        }else if(show == 3){
+            editgoal();
+
+            goto mune;
+        break;
+        }else{
+            printf("invalid choice ");
+             goto mune;
+        break;
+        }
+
+    case 4:
+        printf("please enter how you want to search \n");
+        printf("if u want whit [names enter : 1 or id : 2 ] : ");
+        scanf("%d",&show);
+        if (show == 1){
+            findname();
+            goto mune;
+        break;
+        }else if(show == 2){
+            findid();
+            goto mune;
+        break;
+        }else{
+            printf("invalid choice");
+             goto mune;
+        break;
+        }
+        
+    case 5:
+        deleted();
+        goto mune;
+        break;
+    case 6:
+        statisticsMenu();
+        goto mune;
+        break;
+    case 7:
+        printf("see you later");
+        break;
+    default:
+        printf("invalid choice");
+        goto mune;
+        break;
+    }
+  return 0;
+}
