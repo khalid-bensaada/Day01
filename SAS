@@ -18,6 +18,7 @@ int play=0;
 // formatoins of the player
 void formations(){
   int n;
+  int newid = 1;
   
   printf("please enter how many player you want to enter: ");
   scanf("%d",&n);
@@ -44,7 +45,10 @@ void formations(){
     
     printf("please enter how many goals The player score: ");
     scanf("%d",&max[play].goal);
-    max[play].id = play + 1;
+
+    max[play].id = newid ;
+    newid++;
+    
     play++;
   }
 }
