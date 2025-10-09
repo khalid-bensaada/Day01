@@ -1,0 +1,110 @@
+/* ====== Appointment Form Style ====== */
+.appointment-section {
+  padding: 50px 20px;
+  background-color: #fff;
+  font-family: 'Poppins', sans-serif;
+}
+
+.appointment-section h2 {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+}
+
+.appointment-container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  padding: 30px;
+}
+
+.appointment-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.form-left {
+  flex: 1;
+  min-width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  background-color: #e6f1fb;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.form-group i {
+  background-color: #1e90ff;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  margin-right: 10px;
+  width: 35px;
+  text-align: center;
+}
+
+.form-group input {
+  border: none;
+  outline: none;
+  flex: 1;
+  background: transparent;
+  font-size: 14px;
+  color: #333;
+}
+
+.form-right {
+  flex: 2;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-right textarea {
+  width: 100%;
+  height: 150px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: none;
+  font-size: 14px;
+}
+
+.send-btn {
+  align-self: flex-end;
+  background: none;
+  border: 2px solid #1e90ff;
+  color: #1e90ff;
+  padding: 10px 25px;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.send-btn:hover {
+  background: #1e90ff;
+  color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .appointment-form {
+    flex-direction: column;
+  }
+  .send-btn {
+    align-self: center;
+  }
+}
